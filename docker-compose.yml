@@ -50,6 +50,8 @@ services:
     hostname: event_receiver
     depends_on:
       - "kafka"
+    volumes:
+      - ../ACIT3855-EventReceiver:/var/acit3855/eventreceiver
   data_store:
     image: data-store
     ports: 
@@ -58,6 +60,8 @@ services:
     depends_on:
       - "kafka"
       - "db"
+    volumes:
+      - ../ACIT3855-DataStore:/var/acit3855/datastore
   processor:
     image: processor
     ports: 
@@ -65,6 +69,8 @@ services:
     hostname: processor
     depends_on:
       - "kafka"
+    volumes:
+      - ../ACIT3855-Processor:/var/acit3855/processor
   audit_log:
     image: audit-log
     ports: 
@@ -72,6 +78,8 @@ services:
     hostname: audit_log
     depends_on:
       - "kafka"
+    volumes:
+      - ../ACIT3855-AuditLog:/var/acit3855/auditlog
 # Names our volume
 volumes:
   my-db:
