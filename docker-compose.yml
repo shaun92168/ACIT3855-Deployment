@@ -57,7 +57,7 @@ services:
     hostname: data_store
     depends_on:
       - "kafka"
-        "db"
+      - "db"
   processor:
     image: processor
     ports: 
